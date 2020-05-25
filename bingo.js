@@ -1,23 +1,13 @@
 $(document).ready(function(){
-
-    // var randomNumbers = [];
-    // //Gets unique random numbers
-    // while(randomNumbers.length < 26) {
-    //     var r = Math.floor((Math.random() * 100) + 1); 
-    //     if(randomNumbers.indexOf(r) === -1) randomNumbers.push(r);
-    // }
-
-
-
     var randomNumbers = [];
- 
-    for(i=1; i < 26; i++) {
-        randomNumbers[i] = i;
+
+    //Gets 25 unique random numbers
+    while(randomNumbers.length < 26) {
+        var r = Math.floor((Math.random() * 100) + 1); 
+        if( r === 13) continue;
+
+        if(randomNumbers.indexOf(r) === -1) randomNumbers.push(r);
     }
-
-
-
-    
 
 
     $('li.board').each(function (i){  
@@ -29,15 +19,3 @@ $(document).ready(function(){
     })
 
 })
-
-
-
-// $('#boardPostion2').append("<img src='Images/Waifu12.png' class='center-piece'>");
-
-
-
-
-
-
-
-
