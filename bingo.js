@@ -18,4 +18,8 @@ $(document).ready(function(){
         i++;
     })
 
+    $('#newCardBtn').click(function() {
+        location.reload(); 
+    })
+ 
 })

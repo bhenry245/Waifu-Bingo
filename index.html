@@ -11,13 +11,20 @@
   <link rel="stylesheet" href="stylesheet.css">
   <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <script src="bingo.js"></script>
+  <script src="canvas.js"></script>
+  
 
 
 </head>
 <body>
-<div class="card-container"> 
-
+  <div class="title">
   <img src="Images/Waifu-title.png" alt="Waifu Bingo" id="title">
+  </div>
+
+  
+  <div class="card-container"> 
+    <canvas id="bingoCanvas" width="600px" height="750px"> </canvas>
+    
     <ol class="card">
         <li class="header">B</li>
         <li class="header">I</li>
@@ -25,8 +32,8 @@
         <li class="header">G</li>
         <li class="header">O</li>
 
-        <li class="board" id="boardPostion1"></li>
-        <li class="board" id="boardPostion2"></li>
+        <li class="board"></li>
+        <li class="board"></li>
         <li class="board"></li>
         <li class="board"></li>
         <li class="board"></li>
@@ -57,11 +64,15 @@
         <li class="board"></li>
         <li class="board"></li>
     </ol>
-
-    <h1>Click to claim your waifu!</h1>
-    <p>Special thanks to Bryan Tandu</p>
-
 </div>
+
+
+<div class="footer">
+    <h1>Click to claim your waifu!</h1>
+    <button id="newCardBtn">Get More Waifus</button>
+    <p>Special thanks to Bryan Tandu</p>
+  </div>
+
 
 
 
