@@ -1,6 +1,6 @@
 $(document).ready(function(){
     var img = new Image();
-    img.src = "Images/ClaimedStamp.png";
+    img.src = "Images/claimedstamp.png";
 
     var audio = new Audio('SoundEfx/Claimed.mp3');
     var canvas = document.getElementById("bingoCanvas");
