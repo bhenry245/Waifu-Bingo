@@ -94,4 +94,6 @@
     text-align: center;
     line-height: 120px;
     position: relative;
+    height: 100%;
+    width: 100%;
 }

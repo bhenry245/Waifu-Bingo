@@ -10,13 +10,101 @@
 
   <link rel="stylesheet" href="stylesheet.css">
   <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://code.createjs.com/1.0.0/createjs.min.js"></script>
+  <script src="confetti.js"></script>
   <script src="bingo.js"></script>
   <script src="canvas.js"></script>
   
 
 
+  <script>
+    function init() {
+      var victory = new Audio('SoundEfx/Yatta.mp3');
+      var stage = new createjs.Stage("bingoCanvas");
+      var rect = new createjs.Shape();
+      var won = false;
+
+
+      var bingo = [];
+      var hitboxes = [];
+      var posx = 0;
+      var posy = 120;
+      var width = 120;
+      var height = 120;
+
+
+      for(var i = 0; i < 25; i++) {
+        var hitbox = new createjs.Shape();
+        hitbox.graphics.beginFill(' hsla(0,100%,50%,0.01)').drawRect(posx, posy, width,height);
+        posx += 120;
+
+        if((i+1)%5 === 0)  {
+           posx = 0;
+           posy += 130;
+
+
+        }
+      
+
+        hitboxes.push(hitbox);
+        hitboxes[i].addEventListener("click", bindclick(i))
+
+        stage.addChild(hitboxes[i]);
+
+
+      }
+
+
+      function bindclick(i) {
+        return function() {
+          bingo[i] = true;
+          // console.log(bingo);
+          
+          if(bingo.length >= 5) {
+
+              //Rows
+              if(bingo[0] && bingo[1] && bingo[2] & bingo[3] && bingo[4]) win();
+              if(bingo[5] && bingo[6] && bingo[7] & bingo[8] && bingo[9]) win();
+              if(bingo[10] && bingo[11] && bingo[12] & bingo[13] && bingo[14]) win(); 
+              if(bingo[15] && bingo[16] && bingo[17] & bingo[18] && bingo[19]) win();
+              if(bingo[20] && bingo[21] && bingo[22] & bingo[23] && bingo[24]) win();
+
+              //Cols
+              if(bingo[0] && bingo[5] && bingo[10] & bingo[15] && bingo[20]) win();
+              if(bingo[1] && bingo[6] && bingo[11] & bingo[16] && bingo[21]) win(); 
+              if(bingo[2] && bingo[7] && bingo[12] & bingo[17] && bingo[22]) win(); 
+              if(bingo[3] && bingo[8] && bingo[13] & bingo[18] && bingo[23]) win(); 
+              if(bingo[4] && bingo[9] && bingo[14] & bingo[19] && bingo[24]) win(); 
+
+              //Diagonals
+              if(bingo[0] && bingo[6] && bingo[12] & bingo[18] && bingo[24]) win();
+              if(bingo[4] && bingo[8] && bingo[12] & bingo[16] && bingo[20]) win();
+    
+        
+          }
+
+
+
+
+        };
+      }
+      stage.update();
+
+
+      function win() {
+        bingo = [];
+        confetti.start();
+        victory.play();  
+        setTimeout(function() {confetti.stop();}, 5000);
+      }
+
+
+}
+  </script>
+  
+
 </head>
-<body>
+<body onload="init();">
   <div class="title">
   <img src="Images/Waifu-title.png" alt="Waifu Bingo" id="title">
   </div>
@@ -70,6 +158,7 @@
 <div class="footer">
     <h1>Click to claim your waifu!</h1>
     <button id="newCardBtn">Get More Waifus</button>
+    <p>By Brandon Henry<p> 
     <p>Special thanks to Bryan Tandu</p>
   </div>
 

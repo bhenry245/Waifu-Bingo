@@ -11,11 +11,18 @@ $(document).ready(function(){
 
 function draw(e) {
     audio.play();
-
     var x = Math.round(event.offsetX - img.width/2);
     var y = Math.round(event.offsetY - img.height/2);
     ctx.drawImage(img, x, y);
 }
+
+
+
+
+  function init() {
+    // code here.
+  }
+
 
 
 
